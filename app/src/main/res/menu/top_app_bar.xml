@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/edit"
+        android:title="edit"
+        android:contentDescription="모임 개설"
+        android:icon="@drawable/ic_baseline_add"
+        app:showAsAction="ifRoom" />
+</menu>

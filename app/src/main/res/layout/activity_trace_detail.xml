@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="trace"
+            type="com.orm.data.model.Trace" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.trace.TraceDetailActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/md_theme_primary"
+                android:minHeight="?attr/actionBarSize"
+                app:menu="@menu/top_app_bar_edit"
+                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+                app:title="@{trace.title}" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="6dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_image_upload"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="6dp"
+                    app:cardCornerRadius="8dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/iv_thumbnail"
+                        imageUri="@{trace.imgPath}"
+                        android:layout_width="match_parent"
+                        android:layout_height="270dp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tf_trace_mountain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="6dp"
+                    android:hint="산 이름"
+                    android:scrollbars="none">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="none"
+                        android:text="@{trace.mountainName}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tf_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="6dp"
+                    android:hint="등반 날짜"
+                    android:scrollbars="none"
+                    app:endIconMode="clear_text"
+                    app:startIconDrawable="@drawable/ic_baseline_calendar_month_24">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="none"
+                        android:paddingStart="48dp"
+                        android:text="@{trace.hikingDate}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="6dp"
+                    app:cardCornerRadius="8dp">
+
+                    <androidx.fragment.app.FragmentContainerView
+                        android:id="@+id/fcv_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="270dp" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/transparent_image_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@color/transparent" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="?android:attr/listDivider" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_trace_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="1dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="@color/md_theme_primary"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="1dp"
+                    app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+                    app:strokeColor="@color/md_theme_onPrimary"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="start"
+                        android:orientation="horizontal"
+                        android:padding="20dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/iv_search_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/ic_baseline_directions_run_24" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/btn_club_search"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="발자국 측정 결과"
+                            android:textColor="@color/md_theme_primary"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_map_track"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="6dp"
+                    app:cardCornerRadius="8dp">
+
+                    <androidx.fragment.app.FragmentContainerView
+                        android:id="@+id/fcv_map_track"
+                        android:layout_width="match_parent"
+                        android:layout_height="270dp" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/transparent_image_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@color/transparent" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_graph"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="6dp"
+                    app:cardCornerRadius="8dp">
+
+                    <androidx.fragment.app.FragmentContainerView
+                        android:id="@+id/fragment_graph"
+                        android:layout_width="match_parent"
+                        android:layout_height="360dp"
+                        android:padding="8dp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fcv_table"
+                    android:name="com.orm.ui.fragment.table.TextTableFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="6dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="24dp"
+                    android:text="측정하기" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

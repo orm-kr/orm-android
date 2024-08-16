@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="time"
+            type="String" />
+
+        <variable
+            name="altitude"
+            type="String" />
+
+        <variable
+            name="distance"
+            type="String" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.map.TraceGoogleMapFragment">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="24dp"
+            android:text="발자국 측정 시작" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_stop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="24dp"
+            android:text="발자국 측정 종료" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginHorizontal="2dp"
+            android:padding="12dp"
+            app:cardBackgroundColor="@color/md_theme_primary"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/md_theme_onPrimary"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingVertical="2dp"
+                android:paddingHorizontal="4dp"
+                android:layout_gravity="start|top"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@{`측정시간 : ` + (time ?? `00:00:00`)}"
+                    android:lineSpacingExtra="2dp"
+                    android:textColor="@color/md_theme_primary"
+                    android:textSize="12sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@{`현재고도 : ` + altitude}"
+                    android:lineSpacingExtra="2dp"
+                    android:textColor="@color/md_theme_primary"
+                    android:textSize="12sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@{`산행거리 : ` + distance}"
+                    android:lineSpacingExtra="2dp"
+                    android:textColor="@color/md_theme_primary"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+</layout>

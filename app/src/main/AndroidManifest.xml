@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE_LOCATION"
+        android:minSdkVersion="34" />
+
+    <application
+        android:name=".OrmApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher_orm"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_orm_round"
+        android:supportsRtl="true"
+        android:theme="@style/Base.Theme.Orm"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.MainActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".ui.PhotoViewerActivity"
+            android:exported="false" />
+
+        <service
+            android:name=".util.LocationIntentService"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
+        <activity
+            android:name=".ui.trace.TraceDetailEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.trace.TraceMeasureActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".ui.trace.TraceDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.board.BoardEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.board.BoardDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.board.BoardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.club.ClubMemberActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.club.ClubEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.trace.TraceEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.club.ClubSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mountain.MountainDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.LauncherActivity"
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.club.ClubActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.trace.TraceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mountain.MountainSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.club.ClubDetailActivity"
+            android:exported="false" /> <!-- kakao login -->
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="oauth"
+                    android:scheme="kakao581f68fdb8d8d714da051c55db81cc0d" />
+            </intent-filter>
+        </activity> <!-- firebase service -->
+        <service
+            android:name=".util.MyFirebaseMessagingService"
+            android:exported="false"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service> <!-- google map api key -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAiw76NqNBK2SxB-ezlV0CjfP-HkR1t60g" />
+    </application>
+
+</manifest>
